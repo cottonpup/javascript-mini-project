@@ -10,3 +10,7 @@ Document: Special object that is the entry point to the DOM.
 
 Math object, random Method
 
+# 78. Refactoring Our Code: The DRY Principle
+
+refactoring: restructure the code but wihtout changing how it works.
+
