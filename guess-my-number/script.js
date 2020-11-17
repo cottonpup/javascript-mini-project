@@ -20,7 +20,8 @@ document.querySelector('.check').addEventListener('click', function () {
     displayMessage('⚠️ No number!');
   }
   // 플레이어가 틀린 범위의 숫자를 입력했을 때
-  else if (!1 <= guess <= 20) {
+  // guess 가 1보다 작거나 20보다 크거나
+  else if (1 > guess || guess > 20) {
     displayMessage("It's wrong number.");
   }
   // 플레이어가 이겼을 때, 'guess'와 'secretNumber' 같을 때
