@@ -4,76 +4,76 @@ window.onload = function snow() {
     // 변수에 캔버스 랜더링 컨텍스트 할당하기
     let ctx = canvas.getContext('2d');
 
-    // set canvas dimensions to window height and width
-    // canvas는 300px 과 같은 디폴트 값이 정해져 있기 때문에 canvas의 사이즈와 window의 사이즈를 같게 해야한다.
+    // 캔버스 높이와 너비를 윈도우 높이와 너비로 설정하기
+    // [MDN Canvas API Default Size](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)
+    // canvas는 300px과 같은 디폴트 값이 정해져 있기 때문에 canvas의 사이즈와 window의 사이즈를 같게 해야한다.
     let W = window.innerWidth;
     let H = window.innerHeight;
 
     canvas.width = W;
     canvas.height = H;
 
-    // generate the snowFlakes and apply attribute
+    // 눈송이의 갯수, 눈송이를 담을 빈 배열 변수 생성
     let mf = 300;
     let flakes = [];
 
+    // 스크린 윈도우 사이즈 별로 눈송이의 갯수 할당 조절하기
     if (innerHeight <= 500 && innerWidth <= 500) {
         mf = 100;
     } else if (innerHeight <= 800 && innerWidth <= 800) {
         mf = 200;
     }
 
-    // loop through the empty flakes and apply attributes
+    // 반복문을 통해 flakes 빈 배열에 Push 메서드를 통해 눈송이 담아주기
     for (let i = 0; i < mf; i++) {
         flakes.push({
-            x: Math.random() * W,
-            y: Math.random() * H,
-            r: Math.random() * 2, // min of 2px and max of 7px radius
-            d: Math.random() + 1 // density of the flake // density는 눈이 얼마나 빨리 떨어지는 가에 영향
+            x: Math.random() * W, // X 축의 랜덤 시작 지점
+            y: Math.random() * H, // Y 축  랜덤 높이 지점
+            r: Math.random() * 2, // 최소 2px 최대 7px 지름
+            d: Math.random() + 1 // 눈송이의 무게
         });
     }
 
-    // draw flakes onto canvas
+    // 캔버스에 눈송이 그리기
     function drawFlakes() {
+        // clearRect는 투명한 검정색으로 설정하여 직사각형 화면 픽셀들을 지우는 2D API이다.
         ctx.clearRect(0, 0, W, H);
-        ctx.fillStyle = 'white';
+        // clearRect 후 beginPath 사용 가능
         ctx.beginPath();
+        ctx.fillStyle = 'white';
         ctx.shadowColor = 'white';
         ctx.shadowBlur = 5;
         for (let i = 0; i < mf; i++) {
+            // f 변수에 반복문을 통한 눈송이 할당하기
             let f = flakes[i];
-            ctx.moveTo(f.x, f.y); // position point of drawing pen
-            // start point at 0 degree at the top or
-            // 시계방향으로 원을 그려라
-            //go round to 2 PI radius (full circle)
-            // f.y? 눈보라가 한쪽만 흐르는게 아니라 골고루 퍼져라! ex) f.y = 5;
+            ctx.moveTo(f.x, f.y); // 모든 눈송이에 위에서 할당한 x, y 축의 위치 값을 주기
 
-            // x axis, y axis, radius, degree, 360 degrees(end angle), clockwise
+            // 시계방향으로 원을 그려라
+            // start point at 0 degree at the top or
+            // x axis, y axis, radius, degree(start angle), 360 degrees(end angle), clockwise
             ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
         }
         ctx.fill();
         moveFlakes();
     }
 
-    // animate the flakes
     let angle = 0;
-
     function moveFlakes() {
         angle += 0.01;
         for (let i = 0; i < mf; i++) {
-            // store current flake
+            // f 변수에 반복문을 통한 눈송이 할당하기
             let f = flakes[i];
-
-            // update X and Y coordinates of each snowflake
-            // 다음 위치 업데이트
-            f.y += Math.pow(f.d, 2) + 1; // y coordinate / power function / square density / y축으로 떨어지는 속도
+            // 눈송이의 다음 위치 업데이트
+            f.y += Math.pow(f.d, 2) + 1; // y coordinate / power function / square density / y축의 위치 업데이트
             f.x += Math.sin(angle) * 2; // x coordinate / sine wave down the page 눈이 떨어질 때 만드는 웨이브를 결정
 
-            //if a snowflake reaches the bottom, send a new one to the top
+            // 눈송이가 바닥까지 닿으면 다시 새로 눈송이 생성하기
             if (f.y > H) {
                 flakes[i] = { x: Math.random() * W, y: 0, r: f.r, d: f.d };
             }
         }
     }
+    // 25ms delay를 주어 계속 호출하기
     setInterval(drawFlakes, 25);
 };
 
