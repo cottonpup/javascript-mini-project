@@ -67,7 +67,7 @@ window.onload = function snow() {
             f.y += Math.pow(f.d, 2) + 1; // y coordinate / power function / square density / y축의 위치 업데이트
             f.x += Math.sin(angle) * 2; // x coordinate / sine wave down the page 눈이 떨어질 때 만드는 웨이브를 결정
 
-            // 눈송이가 바닥까지 닿으면 다시 새로 눈송이 생성하기
+            // 눈송이가 바닥까지 닿으면 다시 새로 눈송이 생성하기 gg
             if (f.y > H) {
                 flakes[i] = { x: Math.random() * W, y: 0, r: f.r, d: f.d };
             }
