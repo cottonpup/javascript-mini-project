@@ -29,7 +29,7 @@ window.onload = function snow() {
         flakes.push({
             x: Math.random() * W, // X 축의 랜덤 시작 지점
             y: Math.random() * H, // Y 축  랜덤 높이 지점
-            r: Math.random() * 2, // 최소 2px 최대 7px 지름
+            r: Math.random() * 2 + 1, // 최소 1px 최대 2px 지름
             d: Math.random() + 1 // 눈송이의 무게
         });
     }
