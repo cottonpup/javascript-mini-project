@@ -5,7 +5,7 @@
 //  5. When User's input can't be validated, show a warning modal. ✅
 
 // <<problem>>
-// * input type='text'에서 숫자만 받기
+// * input type='text'에서 숫자만 받기 => validation 추가 (replace 혹은 match 이용)
 
 const binaryNumber = document.querySelector('#bin');
 const decimalNumber = document.querySelector('#dec');

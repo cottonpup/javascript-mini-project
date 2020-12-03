@@ -19,4 +19,12 @@ button태그는 자동으로 submit하는 기능을 가지고 있다. 이는 문
 
 `decimalNumber.setAttribute('readonly', 'readonly');`
 
-##
+## validation
+
+###
+
+## 모달 창에서의 키보드 이벤트
+
+`e.key === 'Enter' && !modal.classList.contains('hidden')`
+
+키보드의 특정 키의 이벤트가 발생하도록 두는 것보다 모달 창의 클래스를 이용해서 더 정확성을 높히는 편이 좋다.
