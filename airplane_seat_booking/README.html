@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>airplane_seat_booking</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="airplane_seat_booking">airplane_seat_booking</h1>
+<p>비행기 좌석 예약 시스템을 구현해보자
+HTML, CSS는 디자인을 참고하여 만들었고 자바스크립트 코드는 스스로 작성하였습니다.</p>
+<h1 id="reference">Reference</h1>
+<p><a href="https://search.muz.li/NjFiYjAwY2Iw">디자인 참고</a></p>
+<p><a href="https://github.com/bradtraversy/vanillawebprojects/tree/master/movie-seat-booking">소스 참고</a></p>
+<h1 id="features">Features</h1>
+<ul class="contains-task-list">
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 1. 버튼 선택 시, 좌석 색상 변경하기 (Occupied된 좌석은 선택불가)</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 2. 좌석 선택 시, 선택 좌석 수에 따라 좌석 수 변경하기 (Occupied된 좌석은 선택불가)</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 3. 좌석 선택 시, 선택 좌석 수에 따라 티켓 가격 계산하여 변경하기</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 4. 도착 공항 선택 시, 도착 공항에 따라 티켓 가격 계산하여 변경하기.</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 5. 도착 공항 선택 시, 도착 공항에 따라 시간표 변경하기.</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 6. 도착 공항 선택 시, 헤더에 도착 공항 정보 변경하기.</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 7. localStorage에 선택 값들 저장하기.</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 도착 공항</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 선택된 좌석
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 선택해제하면 localStorage에서 좌석 삭제</li>
+</ul>
+</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 총 가격</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 도착 시간</li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 8. 좌석 선택 시, 젤리효과 애니메이션 추가하기.</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 9. 도착 공항 선택 시, 선택 값(선택된 좌석, 좌석 수, 티켓 가격) 모두 초기화시키기.</p>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 10. localStorage 값이 있을 경우, 불러와서 프린트하기.</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 이전 선택된 좌석 색상 유지하기.</li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> 11. 도착 공항 선택 select창에서 이벤트가 일어나면, 'click me' 선택을 불가하게 하고 도착 공항으로 기본 값인 홍콩을 보여주게 설정하기.</p>
+</li>
+</ul>
+<h1 id="현재-남아있는-오류">현재 남아있는 오류</h1>
+<p>** 좌석 선택 후 도착공항 변경 시, localStorage에 이전 선택한 좌석넘버가 사라지지 않고 남아있는다.</p>
+<p>** 공항을 변경 되었을 때, 브라우저를 리로드 하면 좌석선택이 불가능하다.</p>
+<h1 id="코드-노트">코드 노트</h1>
+<h2 id="1-버튼-선택-시-좌석-색상-변경하기-occupied된-좌석은-선택불가">1. 버튼 선택 시, 좌석 색상 변경하기 (Occupied된 좌석은 선택불가)</h2>
+<p>이벤트가 일어나는 타겟요소들을 선택할 시, <code>querySelectorAll</code>을 사용하여 요소 자체를 직접적으로 선택하기 보다는, 요소들을 포함하고 있는 컨테이너를 선택하고 이벤트가 일어나는 타겟요소가 특정 클래스 이름을 포함하고 있는 지 확인하는 조건을 줄 수 있다.</p>
+<pre><code class="language-javascript"><div>e.target.classList.contains(CL_SEAT) &amp;&amp; !e.target.classList.contains(CL_OCCUPIED)
+</div></code></pre>
+<p><code>DOMTokenList.contains()</code>API를 사용하여 특정 클래스 이름을 포함하고 있는 지 검사하여 boolean값을 받아 조건을 추가했다.</p>
+<h1 id="아쉬운-점">아쉬운 점</h1>
+<ul>
+<li>도착 공항을 변경했을 때, 가격을 보여주는 창이 따로 있었으면 더 좋았을 것 같다.</li>
+</ul>
+
+    </body>
+    </html>
