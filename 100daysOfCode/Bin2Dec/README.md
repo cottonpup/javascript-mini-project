@@ -8,3 +8,15 @@ button태그는 자동으로 submit하는 기능을 가지고 있다. 이는 문
 타입이 없으면, 버튼은 자동으로 type은 submit이 되어 버린다.
 
 [This is the default if the attribute is not specified for buttons associated with a <form>, or if the attribute is an empty or invalid value.](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button)
+
+## querySelector로 type 명시한 DOM 객체 선택하기
+
+`const button = document.querySelector('input[type="button"]');`
+
+따옴표를 디폴트로 사용하고 있기 때문에, type은 "쌍 따옴표"를 사용한다.
+
+## input 비활성화 하기
+
+`decimalNumber.setAttribute('readonly', 'readonly');`
+
+##
