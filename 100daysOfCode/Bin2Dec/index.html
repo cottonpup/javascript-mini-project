@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Bin2Dec</title>
+    </head>
+    <body>
+        <div class="converter">
+            <div class="converter-title">
+                <h1>Bin2Dec</h1>
+                <h2>Binary to Decimal Converter</h2>
+            </div>
+            <div class="converter-input-area">
+                <h4>Binary: <input id="bin" type="text" /></h4>
+                <h4>Decimal: <input id="dec" type="text" /></h4>
+                <input type="button" value="convert" />
+            </div>
+        </div>
+        <div class="modal hidden">
+            <h3 class="warning"></h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="overlay hidden"></div>
+    </body>
+    <script src="script.js"></script>
+</html>
