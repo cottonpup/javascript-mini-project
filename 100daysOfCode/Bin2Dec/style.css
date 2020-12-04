@@ -13,18 +13,18 @@ body {
 .modal {
     display: flex;
     justify-content: center;
+    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 18em;
-    height: 4em;
+    width: 22em;
+    height: 8em;
     background-color: white;
-    padding: 3rem;
+    padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
     z-index: 2;
-    word-break: keep-all;
     color: rgb(94, 13, 29);
 }
 
