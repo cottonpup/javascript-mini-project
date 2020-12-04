@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Boder-radius Previewer</title>
+    </head>
+    <body>
+        <h1>Boder-radius Previewer</h1>
+        <div class="horizontal-radius-range">
+            <h3>Horizontal radius</h3>
+            <input type="range" id="horizontal-top-left" min="0" max="100" value="10" />
+            <input type="range" id="horizontal-top-right" min="0" max="100" value="10" />
+            <input type="range" id="horizontal-bottom-right" min="0" max="100" value="10" />
+            <input type="range" id="horizontal-bottom-left" min="0" max="100" value="10" />
+        </div>
+        <div class="vertical-radius-range">
+            <h3>Vertical radius</h3>
+            <input type="range" id="vertical-left-top" min="0" max="100" value="10" />
+            <input type="range" id="vertical-right-top" min="0" max="100" value="10" />
+            <input type="range" id="vertical-right-bottom" min="0" max="100" value="10" />
+            <input type="range" id="vertical-left-bottom" min="0" max="100" value="10" />
+        </div>
+        <div class="preview-box"></div>
+        <div class="radius-result">
+            <input type="text" id="radius-result__property" readonly />
+            <input type="button" id="radius-result__copy" value="COPY" />
+        </div>
+        <div class="modal hidden">
+            <h3 class="warning">Copied to clipboard 😘</h3>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>
