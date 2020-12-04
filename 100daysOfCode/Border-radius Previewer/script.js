@@ -45,7 +45,7 @@ copy.addEventListener('click', function () {
     }
 });
 
-function oninputSet() {
+const oninputSet = function () {
     horizontalTopLeft.oninput = valueSet;
     horizontalTopRight.oninput = valueSet;
     horizontalBottomRight.oninput = valueSet;
@@ -55,9 +55,9 @@ function oninputSet() {
     verticalRightTop.oninput = valueSet;
     verticalRightBottom.oninput = valueSet;
     verticalLeftBottom.oninput = valueSet;
-}
+};
 
-function valueSet() {
+const valueSet = function () {
     oninputSet();
     $horizontalTopLeft = horizontalTopLeft.value;
     $horizontalTopRight = horizontalTopRight.value;
@@ -72,6 +72,6 @@ function valueSet() {
     previewBox.style.borderRadius = `${$horizontalTopLeft}% ${$horizontalTopRight}% ${$horizontalBottomRight}% ${$horizontalBottomLeft}%  
                                     / ${$verticalLeftTop}% ${$verticalRightTop}% ${$verticalRightBottom}% ${$verticalLeftBottom}%`;
     result.value = previewBox.style.borderRadius;
-}
+};
 
 valueSet();
