@@ -21,8 +21,6 @@ button태그는 자동으로 submit하는 기능을 가지고 있다. 이는 문
 
 ## validation
 
-###
-
 ## 모달 창에서의 키보드 이벤트
 
 `e.key === 'Enter' && !modal.classList.contains('hidden')`
