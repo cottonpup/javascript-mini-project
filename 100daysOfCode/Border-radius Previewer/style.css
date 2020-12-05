@@ -75,11 +75,10 @@ input[type='button']:active {
     z-index: 10;
     visibility: visible;
     opacity: 1;
-    transition: opacity 0.01s linear;
 }
 
 .hidden {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0.08s, opacity 0.08s linear;
+    transition: visibility 0.06s, opacity 0.06s linear;
 }
