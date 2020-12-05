@@ -15,10 +15,10 @@ const modal = document.querySelector('.modal');
 const times = document.querySelector('.close-modal');
 const overlay = document.querySelector('.overlay');
 const button = document.querySelector('input[type="button"]');
+decimalNumber.setAttribute('readonly', 'readonly');
 
 const showModal = function (text) {
     binaryNumber.setAttribute('readonly', 'readonly');
-    decimalNumber.setAttribute('readonly', 'readonly');
     const warning = document.querySelector('.warning');
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
@@ -27,7 +27,6 @@ const showModal = function (text) {
 
 const closeModal = function () {
     binaryNumber.removeAttribute('readonly', 'readonly');
-    decimalNumber.removeAttribute('readonly', 'readonly');
     binaryNumber.value = '';
     modal.classList.add('hidden');
     overlay.classList.add('hidden');
