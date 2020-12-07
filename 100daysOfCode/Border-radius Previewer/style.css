@@ -73,7 +73,7 @@ input[type='button']:active {
     height: 5em;
     width: 18em;
     background-color: rgba(255, 255, 255, 0.74);
-    padding: 2rem;
+    padding: 2em;
     border-radius: 5px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
     z-index: 10;
@@ -95,10 +95,20 @@ input[type='button']:active {
     }
 
     .horizontal-radius-range {
-        width: 270px;
+        width: 300px;
     }
 
     .vertical-radius-range {
-        width: 270px;
+        width: 300px;
+    }
+    input[type='range'] {
+        margin-bottom: 15px;
+    }
+
+    .radius-range {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 }

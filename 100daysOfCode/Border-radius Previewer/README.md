@@ -4,3 +4,11 @@
 
 “If values are given before and after the slash, then the values before the slash set the horizontal radius and the values after the slash set the vertical radius. If there is no slash, then the
 values set both radii equally.” [W3C](https://www.w3.org/TR/css-backgrounds-3/#border-radius)
+
+# HTMLInputElement.select()
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select
+
+# onInput
+
+https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/oninput
