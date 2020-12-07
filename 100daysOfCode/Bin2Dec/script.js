@@ -17,7 +17,8 @@ const overlay = document.querySelector('.overlay');
 const button = document.querySelector('input[type="button"]');
 decimalNumber.setAttribute('readonly', 'readonly');
 
-const showModal = function (text) {
+const showModal = (text) => {
+    // Disable input when modal shows
     binaryNumber.setAttribute('readonly', 'readonly');
     const warning = document.querySelector('.warning');
     modal.classList.remove('hidden');
@@ -25,14 +26,15 @@ const showModal = function (text) {
     warning.innerText = text;
 };
 
-const closeModal = function () {
+const closeModal = () => {
+    // Enable input when modal shows
     binaryNumber.removeAttribute('readonly', 'readonly');
     binaryNumber.value = '';
     modal.classList.add('hidden');
     overlay.classList.add('hidden');
 };
 
-const validation = function () {
+const validateBinary = () => {
     let check = /^[01]+$/;
     if (!binaryNumber.value.match(check)) {
         showModal('⚠️ 0과 1 두 개의 숫자만 가능합니다.');
@@ -41,16 +43,16 @@ const validation = function () {
     }
 };
 
-const bin_to_dec = function () {
-    let decResult = parseInt((binaryNumber.value + '').replace(/[^01]/gi, ''), 2);
+const bin_to_dec = () => {
+    let decResult = parseInt((binaryNumber.value + '').replace(/[^01]/, ''), 2);
     decimalNumber.value = decResult;
     if (!decResult) {
         decimalNumber.value = '숫자를 입력하시오.';
     }
 };
 
-function init() {
-    binaryNumber.addEventListener('input', validation);
+const init = () => {
+    binaryNumber.addEventListener('input', validateBinary);
     binaryNumber.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
             bin_to_dec();
@@ -60,12 +62,10 @@ function init() {
     overlay.addEventListener('click', closeModal);
     button.addEventListener('click', bin_to_dec);
     document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-            closeModal();
-        } else if (e.key === 'Enter' && !modal.classList.contains('hidden')) {
+        if ((e.key === 'Escape' && !modal.classList.contains('hidden')) || (e.key === 'Enter' && !modal.classList.contains('hidden'))) {
             closeModal();
         }
     });
-}
+};
 
 init();
