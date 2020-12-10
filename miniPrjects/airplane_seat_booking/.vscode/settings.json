@@ -1,7 +1,0 @@
-{
-    "markdown.extension.print.onFileSave": true,
-    "editor.formatOnSave": true,
-    "prettier.printWidth": 140,
-    "prettier.singleQuote": false,
-    "prettier.semi": true
-}
