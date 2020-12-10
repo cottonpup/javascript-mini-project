@@ -12,49 +12,6 @@
  User can click a '+/-' button to change the sign of the number that is currently displayed.
  User can see a decimal point ('.') button on the entry pad to that allows floating point numbers up to 3 places to be entered and operations to be carried out to the maximum number of decimal places entered for any one number.
 */
-
-// function Calculator() {
-
-// }
-// Calculator.prototype.clearAllHistory = function () {
-//     this.inputHistory = [];
-//     this.updateInputDisplay();
-//     this.outputDisplay('0');
-// }
-
-// const instance1 = new Calculator(null, null);
-// instance1.inputDisplay;
-
-// const yG = new Name('영경', 'Renato');
-// const renato = new Name('Renato', '영경');
-// yG.species; // undefined
-// renato.species; // undefined
-// Name.species; // 'human'
-
-// class Name {
-//     static species = 'human';
-//     constructor(name, baby) {
-//         this.name = name;
-//         this.lover = baby;
-//     }
-// }
-
-// const yG = new Name('영경', 'Renato');
-
-// // spread (for arrays only)
-// let arr = ['영경', 'Renato'];
-// const yG1 = new Name(arr[0], arr[1]);
-// const yG2 = new Name(...arr);
-
-// // join (for arrays only) between the elements
-// arr = ['영경', 'Renato', 345, 'Berry'];
-// const result1 = arr.join(' ');
-// const result2 = arr[0] + ' ' + arr[1] + ' ' + arr[2] + ' ' + arr[3];
-
-// // pop (for arrays only)
-// const element1 = arr.pop(); // 'Berry'
-// const element2 = arr.pop(); // 345
-
 class Calculator {
     constructor(input, output) {
         this.inputDisplay = input;
