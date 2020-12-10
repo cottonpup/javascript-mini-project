@@ -1,0 +1,78 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    padding: 50px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1em;
+}
+
+.calculator {
+    width: 320px;
+    padding: 10px;
+    margin: auto;
+    font-size: 1.2em;
+    border: solid 1px rgb(0, 0, 0);
+    border-radius: 12px;
+}
+
+button[type='button']:active {
+    transform: translateY(4px);
+}
+
+.display {
+    display: grid;
+    border: solid 1px white;
+    border-radius: 5px;
+    height: 70px;
+    color: black;
+}
+
+.display input {
+    display: block;
+    text-align: right;
+    padding: 8px 7px;
+    background: none;
+    font-size: 0.9em;
+    border-radius: 5px;
+}
+
+.display output {
+    display: block;
+    text-align: right;
+    padding: 0px 5px;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.keypad {
+    display: block;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    padding-top: 10px;
+}
+
+.keypad button {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    background-color: rgba(0, 0, 0, 0.055);
+    cursor: pointer;
+}
+
+.keypad :hover {
+    background-color: coral;
+}
