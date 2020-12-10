@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Christmas Lights App</title>
+    </head>
+    <body>
+        <h1>Select the circle you want to change! 😉</h1>
+        <div id="circle-list">
+            <div class="circle glow"></div>
+            <div class="circle glow"></div>
+            <div class="circle glow"></div>
+            <div class="circle glow"></div>
+            <div class="circle glow"></div>
+        </div>
+        <div id="button-list">
+            <div id="start-stop-buttons">
+                <label for="turn-off">Turn on/off : </label>
+                <input type="button" value="START" data-start-button />
+                <input type="button" value="STOP" data-stop-button />
+            </div>
+            <div id="speed-buttons">
+                <label for="speed">Change Speed : </label>
+                <input type="number" placeholder="Seconds" min="0" max="5" step="0.1" id="speed-number-value" />
+                <input type="button" name="speed-change-button" value="Change Speed" id="speed-change-button" />
+            </div>
+            <div id="select-all-button">
+                <label for="select-all">Select All : </label>
+                <input type="button" value="Select All" id="select-all" />
+            </div>
+            <div id="color-buttons">
+                <label for="color">Change Color : </label>
+                <input type="color" id="color-value" />
+                <input type="button" name="color-change-button" value="Change Color" id="color-change-button" />
+            </div>
+            <div id="range-button">
+                <label for="size">Change Size : </label>
+                <input type="range" name="size-change-range" id="size-manipulate-button" min="0.2" max="7" step="0.2" />
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
