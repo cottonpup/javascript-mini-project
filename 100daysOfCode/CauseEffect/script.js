@@ -57,9 +57,10 @@ name.forEach((name) => {
 
 // save 버튼을 누르면, 이름이 같은 경우에 객체를 변경.
 document.querySelector('#cancel-button').addEventListener('click', function () {
-    name.forEach((event) => {
+    name.forEach(() => {
+        const activeName = document.querySelector('.profile-list-name.active');
         for (let num = 0; num < 10; num++) {
-            if (people[num].includes(event.target.innerText)) {
+            if (people[num].includes(activeName.innerText)) {
                 setFullName.value = people[num].name;
                 setStreet.value = people[num].street;
                 setCity.value = people[num].city;
@@ -68,6 +69,7 @@ document.querySelector('#cancel-button').addEventListener('click', function () {
                 setTelephone.value = people[num].telephone;
                 setBirthday.value = people[num].birthday;
             }
+            break;
         }
     });
 });
