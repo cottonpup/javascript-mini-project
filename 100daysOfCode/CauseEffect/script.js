@@ -33,25 +33,27 @@
 
 */
 
-const profileName = document.querySelectorAll('profile');
+const profileName = document.querySelector('profile');
 const name = document.querySelectorAll('.profile-list-name');
 const modal = document.querySelector('.modal');
 
-profileName.forEach((profileName) => {
-    profileName.addEventListener('click', function (event) {
-        profileName.classList.add('left-to-right');
-        if (modal.classList.contains('modal-animation-in')) {
-            modal.classList.add('modal-animation-out');
-            modal.classList.remove('modal-animation-in');
-        } else {
-            modal.classList.add('modal-animation-in');
-            modal.classList.remove('modal-animation-out');
-        }
-    });
-});
+/*
+    만약 이름을 지금 액티브된 이름이 아닌 다른 이름을 누르면 애니메이션 발동! 
+    1. 애니메이션을 지운다
+    2. 애니메이션을 다시 넣는다.  
+*/
+
+// profileName.forEach((profileName) => {
+//     profileName.addEventListener('click', function (event) {
+//         profileName.classList.add('left-to-right');
+//         modal.classList.toggle('modal-animation-in');
+//     });
+// });
 
 name.forEach((name) => {
     name.addEventListener('click', function () {
+        profileName.classList.add('left-to-right');
+        modal.classList.toggle('modal-animation-in');
         const activeName = document.querySelector('.profile-list-name.active');
         name.classList.toggle('active');
         if (activeName && activeName !== name) {
