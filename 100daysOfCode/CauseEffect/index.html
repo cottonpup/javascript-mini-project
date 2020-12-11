@@ -3,7 +3,43 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Cause Effect</title>
+        <link rel="stylesheet" href="style.css" />
     </head>
-    <body></body>
+    <body>
+        <main>
+            <h3>User can click on a name in the list to update</h3>
+                <profile>
+                    <div class="profile-list">
+                        <h1 class="profile-list-name">김철수</h1>
+                        <h1 class="profile-list-name">김철수</h1>
+                        <h1 class="profile-list-name">김철수</h1>
+                    </div>
+                </profile>
+                <div class="modal">
+                        <div class="profile-detail-info">
+                            <label for="full-name">Full name : </label>
+                            <input type="text" value="김철수" id="full-name" />
+                        </div>
+                        <div class="profile-detail-info">
+                            <label for="adresss">Address : </label>
+                            <input type="text" value="경기도 고양시 얌얌" id="address" />
+                        </div>
+                        <div class="profile-detail-info">
+                            <label for="telephone number">Telephone number : </label>
+                            <input type="text" value="010-1234-1234" id="telephone-number" />
+                        </div>
+                        <div class="profile-detail-info">
+                            <label for="birthday">birthday</label>
+                            <input type="text" value="1988.12.03" id="birthday" />
+                        </div>
+                        <div class="button-lsit">
+                            <input type="button" value="Edit" id="edit-button" />
+                            <input type="button" value="Save" id="save-button" />
+                        </div>
+                </div>
+            </div>
+        </main>
+        <script src="script.js"></script>
+    </body>
 </html>
