@@ -58,7 +58,7 @@ input[type='button']:active {
     display: none;
 }
 
-@keyframes swing {
+@keyframes swingIn {
     0% {
         transform: translateX(30rem);
         left: 160%;
@@ -69,8 +69,22 @@ input[type='button']:active {
     }
 }
 
+@keyframes swingOut {
+    0% {
+        transform: translateX(-30rem);
+        left: 60%;
+    }
+    100% {
+        transform: translateX(30rem);
+        left: 160%;
+    }
+}
+
 .modal-animation-in {
-    animation: swing 2s ease forwards;
+    animation: swingIn 2s ease forwards;
+}
+.modal-animation-out {
+    animation: swingOut 2s ease forwards;
 }
 
 .modal {
@@ -84,4 +98,14 @@ input[type='button']:active {
     border-radius: 5px;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
     z-index: 10;
+}
+
+.profile-list-name::before {
+    display: inline-block;
+    content: '\203A';
+    transition: transform 0.2s ease-in-out;
+}
+
+.profile-list-name.active::before {
+    transform: rotate(90deg);
 }
