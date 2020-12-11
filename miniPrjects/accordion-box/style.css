@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
 
 * {
     margin: 0;
@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: "Kumbh Sans", sans-serif;
+    font-family: 'Kumbh Sans', sans-serif;
     background-color: rgb(194, 144, 153);
     color: aliceblue;
 }
@@ -44,7 +44,7 @@ h1 {
 }
 
 .accordion-item-header::after {
-    content: "\002B";
+    content: '\002B';
     font-size: 2rem;
     position: absolute;
     right: 1rem;
