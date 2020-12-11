@@ -1,0 +1,87 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 4rem;
+}
+
+input[type='text'] {
+    border: none;
+    outline: none;
+}
+input[type='text']:focus {
+    border: 1px solid blue;
+    border-radius: 20px;
+}
+
+#test {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+profile,
+h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em;
+    transition: 1s all ease;
+}
+
+.left-to-right {
+    transform: translateX(-30rem);
+}
+
+h1:hover {
+    color: red;
+}
+
+h1:active {
+    color: rgb(136, 1, 1);
+    transform: translateY(4px);
+}
+
+input[type='button']:active {
+    transform: translateY(4px);
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes swing {
+    0% {
+        transform: translateX(30rem);
+        left: 160%;
+    }
+    100% {
+        transform: translateX(-30rem);
+        left: 60%;
+    }
+}
+
+.modal-animation-in {
+    animation: swing 2s ease forwards;
+}
+
+.modal {
+    position: absolute;
+    top: 18%;
+    left: 160%;
+    height: 70%;
+    width: 70%;
+    background-color: white;
+    padding: 6rem;
+    border-radius: 5px;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
