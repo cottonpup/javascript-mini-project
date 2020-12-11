@@ -69,22 +69,8 @@ input[type='button']:active {
     }
 }
 
-@keyframes swingOut {
-    0% {
-        transform: translateX(-30rem);
-        left: 60%;
-    }
-    100% {
-        transform: translateX(30rem);
-        left: 160%;
-    }
-}
-
 .modal-animation-in {
     animation: swingIn 2s ease forwards;
-}
-.modal-animation-out {
-    animation: swingOut 2s ease forwards;
 }
 
 .modal {
