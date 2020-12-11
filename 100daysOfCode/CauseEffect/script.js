@@ -34,11 +34,28 @@
 */
 
 const profileName = document.querySelectorAll('profile');
+const name = document.querySelectorAll('.profile-list-name');
 const modal = document.querySelector('.modal');
 
 profileName.forEach((profileName) => {
     profileName.addEventListener('click', function (event) {
-        profileName.classList.toggle('left-to-right');
-        modal.classList.toggle('modal-animation-in');
+        profileName.classList.add('left-to-right');
+        if (modal.classList.contains('modal-animation-in')) {
+            modal.classList.add('modal-animation-out');
+            modal.classList.remove('modal-animation-in');
+        } else {
+            modal.classList.add('modal-animation-in');
+            modal.classList.remove('modal-animation-out');
+        }
+    });
+});
+
+name.forEach((name) => {
+    name.addEventListener('click', function () {
+        const activeName = document.querySelector('.profile-list-name.active');
+        name.classList.toggle('active');
+        if (activeName && activeName !== name) {
+            activeName.classList.toggle('active');
+        }
     });
 });
