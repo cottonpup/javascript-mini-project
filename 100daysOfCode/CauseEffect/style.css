@@ -25,11 +25,13 @@ input[type='text']:focus {
 label {
     font-size: 1.5em;
     font-weight: 800;
+    color: rgb(10, 37, 73);
 }
 
 input[type='text'] {
     font-size: 1.3em;
     font-weight: 600;
+    color: #353434;
 }
 
 input[type='button'] {
@@ -68,8 +70,22 @@ h3 {
     transition: 1s all ease;
 }
 
+#title {
+    font-size: 2em;
+    font-weight: 500;
+    font-style: italic;
+}
+
+#category {
+    margin-top: 2em;
+}
+
 .left-to-right {
     transform: translateX(-30rem);
+}
+
+h1.active {
+    color: red;
 }
 
 h1:hover {
@@ -101,6 +117,10 @@ input[type='button']:active {
 } */
 
 .modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     position: absolute;
     top: 18%;
     left: 160%;
@@ -111,17 +131,22 @@ input[type='button']:active {
     border-radius: 5px;
     box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
     z-index: 10;
-    transition: transform 1.5s ease-in-out;
-    transition: left 1.5s ease-in-out;
+    transition: transform 1.5s ease;
+    transition: left 1.5s ease;
 }
 .modal-animation-in {
     transform: translateX(-30rem);
     left: 60%;
 }
 
+#category {
+    color: #666666;
+    font-weight: 600;
+}
+
 .profile-list-name::before {
     display: inline-block;
-    content: '\203A';
+    content: '\203A\0020';
     transition: transform 0.2s ease-in-out;
 }
 
