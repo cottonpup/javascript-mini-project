@@ -8,7 +8,8 @@
 //   User can see the selection effect removed from a name in the summary list when a new name is clicked.
 
 const profileName = document.querySelector('profile');
-const name = document.querySelectorAll('.profile-list-name');
+// Renato: you should call this `names` not `name`
+const names = document.querySelectorAll('.profile-list-name');
 const modal = document.querySelector('.modal');
 const setFullName = document.querySelector('#full-name');
 const setStreet = document.querySelector('#street');
@@ -28,10 +29,30 @@ const people = [
     { name: 'Taylor Alison Swift', street: '1230 1th Ave', city: 'Florida(FL)', state: 'Ponte Vedra Beach', country: 'Japan', telephone: '32-3423-21', birthday: '1997.04.01' }
 ];
 
-name.forEach((name) => {
+function init(num) {
+    setFullName.value = people[num].name;
+    setStreet.value = people[num].street;
+    setCity.value = people[num].city;
+    setState.value = people[num].state;
+    setCountry.value = people[num].country;
+    setTelephone.value = people[num].telephone;
+    setBirthday.value = people[num].birthday;
+}
+
+function setValue(num) {
+    people[num].name = setFullName.value;
+    people[num].street = setStreet.value;
+    people[num].city = setCity.value;
+    people[num].state = setState.value;
+    people[num].country = setCountry.value;
+    people[num].telephone = setTelephone.value;
+    people[num].birthday = setBirthday.value;
+}
+
+names.forEach((name) => {
     name.addEventListener('click', function (event) {
-        profileName.classList.add('left-to-right');
         const activeName = document.querySelector('.profile-list-name.active');
+        profileName.classList.add('left-to-right');
         name.classList.toggle('active');
         modal.classList.add('modal-animation-in');
         if (activeName === event.target) {
@@ -41,51 +62,28 @@ name.forEach((name) => {
         if (activeName && activeName !== name) {
             activeName.classList.toggle('active');
         }
-        for (let num = 0; num < 10; num++) {
+        for (let num = 0; num < people.length; num++) {
             if (people[num].name.includes(name.innerText)) {
-                setFullName.value = people[num].name;
-                setStreet.value = people[num].street;
-                setCity.value = people[num].city;
-                setState.value = people[num].state;
-                setCountry.value = people[num].country;
-                setTelephone.value = people[num].telephone;
-                setBirthday.value = people[num].birthday;
+                init(num);
             }
         }
     });
 });
 
-// save 버튼을 누르면, 이름이 같은 경우에 객체를 변경.
 document.querySelector('#cancel-button').addEventListener('click', function () {
-    name.forEach(() => {
+    for (let num = 0; num < 6; num++) {
         const activeName = document.querySelector('.profile-list-name.active');
-        for (let num = 0; num < 10; num++) {
-            if (people[num].includes(activeName.innerText)) {
-                setFullName.value = people[num].name;
-                setStreet.value = people[num].street;
-                setCity.value = people[num].city;
-                setState.value = people[num].state;
-                setCountry.value = people[num].country;
-                setTelephone.value = people[num].telephone;
-                setBirthday.value = people[num].birthday;
-            }
-            break;
+        if (people[num].name.includes(activeName.innerText)) {
+            init(num);
         }
-    });
+    }
 });
 
 document.querySelector('#save-button').addEventListener('click', function () {
-    name.forEach((name) => {
-        for (let num = 0; num < 10; num++) {
-            if (people[num].name.includes(name.innerText)) {
-                people[num].name = setFullName.value;
-                people[num].street = setStreet.value;
-                people[num].city = setCity.value;
-                people[num].state = setState.value;
-                people[num].country = setCountry.value;
-                people[num].telephone = setTelephone.value;
-                people[num].birthday = setBirthday.value;
-            }
+    const activeName = document.querySelector('.profile-list-name.active');
+    for (let num = 0; num < people.length; num++) {
+        if (people[num].name.includes(activeName.innerText)) {
+            setValue(num);
         }
-    });
+    }
 });
