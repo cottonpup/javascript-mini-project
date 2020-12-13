@@ -192,3 +192,7 @@ input[type='button']:active {
     background-color: rgba(136, 1, 1, 0.438);
     box-shadow: inset 0px 1px 0px 0px #666666;
 }
+
+#new-person-input {
+    margin: 0;
+}
