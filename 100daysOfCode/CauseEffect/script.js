@@ -8,7 +8,7 @@
 //   User can see the selection effect removed from a name in the summary list when a new name is clicked.
 
 const profileName = document.querySelector('profile');
-const names = document.getElementsByClassName('profile-list-name');
+let names = document.getElementsByClassName('profile-list-name');
 const modal = document.querySelector('.modal');
 const setFullName = document.querySelector('#full-name');
 const setStreet = document.querySelector('#street');
@@ -66,46 +66,49 @@ const people = [
         birthday: '1997.04.01'
     }
 ];
-const addButton = document.querySelector('#add-button');
+const newPersonAdd = document.querySelector('#new-person-add');
 const newPersonInput = document.querySelector('#new-person-input');
+const newPersonSave = document.querySelector('#new-person-save');
 
-function init(num) {
-    setFullName.value = people[num].name;
-    setStreet.value = people[num].street;
-    setCity.value = people[num].city;
-    setState.value = people[num].state;
-    setCountry.value = people[num].country;
-    setTelephone.value = people[num].telephone;
-    setBirthday.value = people[num].birthday;
+function getValue() {
+    const activeName = document.querySelector('.profile-list-name.active');
+    console.log(activeName);
+    for (let num = 0; num < people.length; num++) {
+        if (people[num].name.includes(activeName.innerText)) {
+            setFullName.value = people[num].name;
+            setStreet.value = people[num].street;
+            setCity.value = people[num].city;
+            setState.value = people[num].state;
+            setCountry.value = people[num].country;
+            setTelephone.value = people[num].telephone;
+            setBirthday.value = people[num].birthday;
+        }
+    }
 }
 
-function setValue(num) {
-    people[num].name = setFullName.value;
-    people[num].street = setStreet.value;
-    people[num].city = setCity.value;
-    people[num].state = setState.value;
-    people[num].country = setCountry.value;
-    people[num].telephone = setTelephone.value;
-    people[num].birthday = setBirthday.value;
+function setValue() {
+    const activeName = document.querySelector('.profile-list-name.active');
+    console.log(activeName);
+    for (let num = 0; num < people.length; num++) {
+        if (people[num].name.includes(activeName.innerText)) {
+            activeName.innerText = setFullName.value.split(' ')[0];
+            people[num].name = setFullName.value;
+            people[num].street = setStreet.value;
+            people[num].city = setCity.value;
+            people[num].state = setState.value;
+            people[num].country = setCountry.value;
+            people[num].telephone = setTelephone.value;
+            people[num].birthday = setBirthday.value;
+        }
+    }
 }
 
 document.querySelector('#cancel-button').addEventListener('click', function () {
-    const activeName = document.querySelector('.profile-list-name.active');
-    for (let num = 0; num < people.length; num++) {
-        if (people[num].name.includes(activeName.innerText)) {
-            init(num);
-        }
-    }
+    getValue();
 });
 
 document.querySelector('#save-button').addEventListener('click', function () {
-    const activeName = document.querySelector('.profile-list-name.active');
-    for (let num = 0; num < people.length; num++) {
-        if (people[num].name.includes(activeName.innerText)) {
-            setValue(num);
-            activeName.innerText = setFullName.value.substr(0, setFullName.value.indexOf(' '));
-        }
-    }
+    setValue();
 });
 
 const activeEvent = (event) => {
@@ -118,61 +121,57 @@ const activeEvent = (event) => {
     modal.classList.add('modal-animation-in');
     event.target.classList.toggle('active');
 
-    if (modal.classList.contains('modal-animation-in')) addButton.classList.remove('hidden');
-
     if (activeName && activeName !== event.target) activeName.classList.toggle('active');
 
     if (activeName === event.target) {
         profileName.classList.remove('name-in-and-out');
         modal.classList.remove('modal-animation-in');
-        addButton.classList.add('hidden');
     }
-
-    //   for (let num = 0; num < people.length; num++) {
-    //     if (people[num].name.includes(name.innerText)) {
-    //       init(num);
-    //     }
-    //   }
+    getValue();
 };
 
-const addEvent = () => {
-    [...names].forEach((name) => name.addEventListener('click', activeEvent));
+// R
+const addEvent = (htmlElements) => {
+    [...htmlElements].forEach((name) => name.addEventListener('click', activeEvent));
 };
 
-addEvent();
+// R
+addEvent(names);
 
-const defaultObject = {
-    name: `${newPersonInput.value}`,
-    street: '',
-    city: '',
-    state: '',
-    country: '',
-    telephone: '',
-    birthday: ''
-};
 // button 의 active, hidden 을 담당하는 함수
 
 // button 에 입력하면 새로 목록을 추가
-addButton.addEventListener('click', function () {
-    addButton.value = 'Save';
-    addButton.classList.toggle('active');
+// R
+newPersonAdd.addEventListener('click', function () {
+    newPersonInput.focus();
+    newPersonAdd.classList.toggle('hidden');
     newPersonInput.classList.toggle('hidden');
-
-    if (!addButton.classList.contains('active') && modal.classList.contains('modal-animation-in')) {
-        document.querySelector('.profile-list').insertAdjacentHTML('beforeend', `<h1 class='profile-list-name'>${newPersonInput.value}</h1>`);
-        addButton.value = 'Add new person';
-
-        people.push(defaultObject);
-        console.log(people);
-
-        newPersonInput.value = '';
-        addEvent();
+    newPersonSave.classList.toggle('hidden');
+    if (modal.classList.contains('')) {
+        newPersonAdd.classList.toggle('hidden');
     }
 });
+// R
+newPersonSave.addEventListener('click', function () {
+    document.querySelector('.profile-list').insertAdjacentHTML('beforeend', `<h1 class='profile-list-name'>${newPersonInput.value.split(' ')[0]}</h1>`);
 
-/*
-문제 1: forEach의 인자값을 다이나믹하게 업데이트 할 필요가 있음.
-문제 2: 클릭 event가 발생이 되지 않음 => name인자에 포함되어있지 않음. 왜지.. 조낸 어이..
+    people.push({
+        name: newPersonInput.value,
+        street: '',
+        city: '',
+        state: '',
+        country: '',
+        telephone: '',
+        birthday: ''
+    });
+    console.log(people);
 
-객체에 true/false 추가해서 애니메이션. 
-*/
+    newPersonInput.value = '';
+
+    names = document.getElementsByClassName('profile-list-name');
+    addEvent([names[names.length - 1]]);
+
+    newPersonAdd.classList.toggle('hidden');
+    newPersonInput.classList.toggle('hidden');
+    newPersonSave.classList.toggle('hidden');
+});
