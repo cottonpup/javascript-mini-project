@@ -8,8 +8,7 @@
 //   User can see the selection effect removed from a name in the summary list when a new name is clicked.
 
 const profileName = document.querySelector('profile');
-// Renato: you should call this `names` not `name`
-const names = document.querySelectorAll('.profile-list-name');
+const names = document.getElementsByClassName('profile-list-name');
 const modal = document.querySelector('.modal');
 const setFullName = document.querySelector('#full-name');
 const setStreet = document.querySelector('#street');
@@ -18,8 +17,7 @@ const setState = document.querySelector('#state');
 const setCountry = document.querySelector('#country');
 const setTelephone = document.querySelector('#telephone-number');
 const setBirthday = document.querySelector('#birthday');
-const setProfileName = document.querySelector('profile');
-const setName = document.querySelectorAll('.profile-list-name');
+
 const setModal = document.querySelector('.modal');
 const people = [
     { name: 'James Smith', street: '2130 66th Ave', city: 'California(CA)', state: 'Oakland', country: 'United States', telephone: '(408) 606-5775', birthday: '1987.04.21' },
@@ -28,6 +26,8 @@ const people = [
     { name: 'Ariana Grande-Butera', street: '130 5th Ave', city: 'Georgia(GA)', state: 'Atlanta', country: 'United States', telephone: '134-206-5775', birthday: '2004.11.25' },
     { name: 'Taylor Alison Swift', street: '1230 1th Ave', city: 'Florida(FL)', state: 'Ponte Vedra Beach', country: 'Japan', telephone: '32-3423-21', birthday: '1997.04.01' }
 ];
+const addButton = document.querySelector('#add-button');
+const newPersonInput = document.querySelector('#new-person-input');
 
 function init(num) {
     setFullName.value = people[num].name;
@@ -49,30 +49,9 @@ function setValue(num) {
     people[num].birthday = setBirthday.value;
 }
 
-names.forEach((name) => {
-    name.addEventListener('click', function (event) {
-        const activeName = document.querySelector('.profile-list-name.active');
-        profileName.classList.add('left-to-right');
-        name.classList.toggle('active');
-        modal.classList.add('modal-animation-in');
-        if (activeName === event.target) {
-            modal.classList.remove('modal-animation-in');
-            profileName.classList.remove('left-to-right');
-        }
-        if (activeName && activeName !== name) {
-            activeName.classList.toggle('active');
-        }
-        for (let num = 0; num < people.length; num++) {
-            if (people[num].name.includes(name.innerText)) {
-                init(num);
-            }
-        }
-    });
-});
-
 document.querySelector('#cancel-button').addEventListener('click', function () {
-    for (let num = 0; num < 6; num++) {
-        const activeName = document.querySelector('.profile-list-name.active');
+    const activeName = document.querySelector('.profile-list-name.active');
+    for (let num = 0; num < people.length; num++) {
         if (people[num].name.includes(activeName.innerText)) {
             init(num);
         }
@@ -84,6 +63,53 @@ document.querySelector('#save-button').addEventListener('click', function () {
     for (let num = 0; num < people.length; num++) {
         if (people[num].name.includes(activeName.innerText)) {
             setValue(num);
+            activeName.innerText = setFullName.value.substr(0, setFullName.value.indexOf(' '));
         }
     }
+});
+
+addButton.addEventListener('click', function () {
+    addButton.value = 'Save';
+    addButton.classList.toggle('active');
+    newPersonInput.classList.toggle('hidden');
+
+    if (!addButton.classList.contains('active') && modal.classList.contains('modal-animation-in')) {
+        document.querySelector('.profile-list').insertAdjacentHTML('beforeend', `<h1 class='profile-list-name'>${newPersonInput.value}</h1>`);
+        addButton.value = 'Add new person';
+        const defaultObject = { name: `${newPersonInput.value}`, street: '', city: '', state: '', country: '', telephone: '', birthday: '' };
+        people.push(defaultObject);
+        console.log(people);
+        newPersonInput.value = '';
+    }
+});
+
+/*
+문제 1: forEach의 인자값을 다이나믹하게 업데이트 할 필요가 있음.
+문제 2: 클릭 event가 발생이 되지 않음 => name인자에 포함되어있지 않음. 왜지.. 조낸 어이..
+
+객체에 true/false 추가해서 애니메이션. 
+*/
+
+[...names].forEach((name) => {
+    name.addEventListener('click', function (event) {
+        console.log(`노드리스트 길이는 ${names.length}`);
+        console.log(`지금 클릭한 이름은 ${name.innerText}`);
+        const activeName = document.querySelector('.profile-list-name.active');
+        profileName.classList.add('name-in-and-out');
+        modal.classList.add('modal-animation-in');
+        event.target.classList.toggle('active');
+
+        if (modal.classList.contains('modal-animation-in')) addButton.classList.remove('hidden');
+        if (activeName && activeName !== event.target) activeName.classList.toggle('active');
+        if (activeName === event.target) {
+            profileName.classList.remove('name-in-and-out');
+            modal.classList.remove('modal-animation-in');
+            addButton.classList.add('hidden');
+        }
+        for (let num = 0; num < people.length; num++) {
+            if (people[num].name.includes(name.innerText)) {
+                init(num);
+            }
+        }
+    });
 });
