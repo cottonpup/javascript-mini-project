@@ -70,7 +70,8 @@ const newPersonAdd = document.querySelector('#new-person-add');
 const newPersonInput = document.querySelector('#new-person-input');
 const newPersonSave = document.querySelector('#new-person-save');
 
-function getValue() {
+// 데이터 값 불러오는 함수
+const getValue = () => {
     const activeName = document.querySelector('.profile-list-name.active');
     console.log(activeName);
     for (let num = 0; num < people.length; num++) {
@@ -84,9 +85,10 @@ function getValue() {
             setBirthday.value = people[num].birthday;
         }
     }
-}
+};
 
-function setValue() {
+// 데이터 값 설정하는 함수
+const setValue = () => {
     const activeName = document.querySelector('.profile-list-name.active');
     console.log(activeName);
     for (let num = 0; num < people.length; num++) {
@@ -101,16 +103,9 @@ function setValue() {
             people[num].birthday = setBirthday.value;
         }
     }
-}
+};
 
-document.querySelector('#cancel-button').addEventListener('click', function () {
-    getValue();
-});
-
-document.querySelector('#save-button').addEventListener('click', function () {
-    setValue();
-});
-
+// 이름을 클릭해서 액티브 상태일 때의 함수
 const activeEvent = (event) => {
     console.log(`노드리스트 길이는 ${names.length}`);
     //   console.log(`지금 클릭한 이름은 ${name.innerText}`);
@@ -130,19 +125,16 @@ const activeEvent = (event) => {
     getValue();
 };
 
-// R
+// 이름을 클릭할 때 마다 액티브 이벤트를 삽입하는 함수
+// 동적 노드리스트를 인자 값에 다시 업데이트 하기 위함.
 const addEvent = (htmlElements) => {
     [...htmlElements].forEach((name) => name.addEventListener('click', activeEvent));
 };
 
-// R
 addEvent(names);
 
-// button 의 active, hidden 을 담당하는 함수
-
-// button 에 입력하면 새로 목록을 추가
-// R
-newPersonAdd.addEventListener('click', function () {
+// nerPersonAdd 버튼을 클릭했을 때, 인풋, save 버튼을 보이는 함수
+const addNewPerson = () => {
     newPersonInput.focus();
     newPersonAdd.classList.toggle('hidden');
     newPersonInput.classList.toggle('hidden');
@@ -150,8 +142,13 @@ newPersonAdd.addEventListener('click', function () {
     if (modal.classList.contains('')) {
         newPersonAdd.classList.toggle('hidden');
     }
+};
+
+newPersonAdd.addEventListener('click', function () {
+    addNewPerson();
 });
-// R
+
+// save 버튼을 클릭했을 때, 새로운 사람들의 데이터를 넣어주는 함수
 newPersonSave.addEventListener('click', function () {
     document.querySelector('.profile-list').insertAdjacentHTML('beforeend', `<h1 class='profile-list-name'>${newPersonInput.value.split(' ')[0]}</h1>`);
 
@@ -168,10 +165,24 @@ newPersonSave.addEventListener('click', function () {
 
     newPersonInput.value = '';
 
+    // 새로운 사람들의 데이터가 들어왔을 때, names 다시 선언하여, 업데이트
+    // TODO: addEvent([names[names.length - 1]]); 이 부분 이해하기!
     names = document.getElementsByClassName('profile-list-name');
+    console.log(names + '지금 새로운 사람이 들어왔따!');
     addEvent([names[names.length - 1]]);
 
+    // 활성화 된 버튼들 비활성화
     newPersonAdd.classList.toggle('hidden');
     newPersonInput.classList.toggle('hidden');
     newPersonSave.classList.toggle('hidden');
+});
+
+// 캔슬 이벤트
+document.querySelector('#cancel-button').addEventListener('click', function () {
+    getValue();
+});
+
+// 세이브 이벤트
+document.querySelector('#save-button').addEventListener('click', function () {
+    setValue();
 });
