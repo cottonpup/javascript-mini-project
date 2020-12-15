@@ -150,7 +150,12 @@ newPersonAdd.addEventListener('click', function () {
 
 // save 버튼을 클릭했을 때, 새로운 사람들의 데이터를 넣어주는 함수
 newPersonSave.addEventListener('click', function () {
-    document.querySelector('.profile-list').insertAdjacentHTML('beforeend', `<h1 class='profile-list-name'>${newPersonInput.value.split(' ')[0]}</h1>`);
+    document
+        .querySelector('.profile-list')
+        .insertAdjacentHTML(
+            'beforeend',
+            `<h1 class='profile-list-name'>${newPersonInput.value.split(' ')[0]}</h1>`
+        );
 
     people.push({
         name: newPersonInput.value,
@@ -170,6 +175,9 @@ newPersonSave.addEventListener('click', function () {
     names = document.getElementsByClassName('profile-list-name');
     console.log(names + '지금 새로운 사람이 들어왔따!');
     addEvent([names[names.length - 1]]);
+
+    // names = [{}.{},{}]
+    // [[ㅜㅜ], [ㅜㅜ], [ㅜㅜ]]
 
     // 활성화 된 버튼들 비활성화
     newPersonAdd.classList.toggle('hidden');
