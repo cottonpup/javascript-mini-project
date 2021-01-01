@@ -18,12 +18,12 @@
 |  8  | Snowy background canvas | 캔버스 API를 활용한 눈 오는 배경 구현    | https://github.com/EmilyLee1206/javascript-mini-project/tree/master/miniPrjects/snowy-background-with-canvas |
 |  9  | Weather app             | 날씨 API를 활용한 날씨 앱 구현           | https://github.com/EmilyLee1206/javascript-mini-project/tree/master/miniPrjects/weather-app                  |
 
-## 코딩 챌린지
+# Coding Challenges
 
 아래 목록은 [App Ideas](https://github.com/florinpop17/app-ideas)를 보고 스스로
 구축한 프로젝트입니다.
 
-# Florinpop17 Project Challenge
+## Florinpop17 Project Challenge
 
 | No  | Name                   | Description                  | Repository                                                                                                  |
 | :-: | :--------------------- | :--------------------------- | :---------------------------------------------------------------------------------------------------------- |
@@ -32,7 +32,7 @@
 | 12  | Cause effect           | 명단 관리부 앱 구현          | https://github.com/EmilyLee1206/javascript-mini-project/tree/master/100daysOfCode/CauseEffect               |
 | 13  | Christmas Lights app   | 크리스마스 조명 앱 구현      | https://github.com/EmilyLee1206/javascript-mini-project/tree/master/100daysOfCode/ChristmasLightsApp        |
 
-# Frontend Mentor Challenge
+## Frontend Mentor Challenge
 
 | No  | Name               | Description                   | Repository |
 | :-: | :----------------- | :---------------------------- | :--------- |
