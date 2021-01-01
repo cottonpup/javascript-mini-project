@@ -7,5 +7,8 @@ const searchBox = document.querySelector('.search-box');
 searchBox.addEventListener('keypress', setQuery);
 
 function setQuery(evt) {
-    Image();
+    if (evt.keyCode == 13) {
+        getResults(searchBox.value);
+        console.log(searchBox.value);
+    }
 }
