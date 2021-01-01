@@ -6,7 +6,7 @@
 드가 간혹 존재할 수 있습니다. 프로젝트 내 대부분의 README는 추가 설명없이 배운내
 용 위주로 작성되었습니다.
 
-| Day | Name                    | Description                              | Repository                                                                                                   |
+| No  | Name                    | Description                              | Repository                                                                                                   |
 | :-: | :---------------------- | :--------------------------------------- | :----------------------------------------------------------------------------------------------------------- |
 |  1  | Accordion box           | Q & A 아코디언 패널 구현                 | https://github.com/EmilyLee1206/javascript-mini-project/tree/master/miniPrjects/accordion-box                |
 |  2  | Airplane seat booking   | 비행기 좌석 예매 시스템을 구현           | https://github.com/EmilyLee1206/javascript-mini-project/tree/master/miniPrjects/airplane_seat_booking        |
@@ -23,9 +23,9 @@
 아래 목록은 [App Ideas](https://github.com/florinpop17/app-ideas)를 보고 스스로
 구축한 프로젝트입니다.
 
-| Day | Name                   | Description                  | Repository                                                                                                  |
+| No  | Name                   | Description                  | Repository                                                                                                  |
 | :-: | :--------------------- | :--------------------------- | :---------------------------------------------------------------------------------------------------------- |
 | 10  | Bin to dec             | 이진법 십진법 변환기 구현    | https://github.com/EmilyLee1206/javascript-mini-project/tree/master/100daysOfCode/Bin2Dec                   |
 | 11  | Border-radius Previewr | Border-radius Previewer 구현 | https://github.com/EmilyLee1206/javascript-mini-project/tree/master/100daysOfCode/Border-radius%20Previewer |
 | 12  | Cause effect           | 명단 관리부 앱 구현          | https://github.com/EmilyLee1206/javascript-mini-project/tree/master/100daysOfCode/CauseEffect               |
-| 12  | Christmas Lights app   | 크리스마스 조명 앱 구현      | https://github.com/EmilyLee1206/javascript-mini-project/tree/master/100daysOfCode/ChristmasLightsApp        |
+| 13  | Christmas Lights app   | 크리스마스 조명 앱 구현      | https://github.com/EmilyLee1206/javascript-mini-project/tree/master/100daysOfCode/ChristmasLightsApp        |
