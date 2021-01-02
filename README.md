@@ -36,4 +36,4 @@
 
 | No  | Name               | Description                   | Repository |
 | :-: | :----------------- | :---------------------------- | :--------- |
-| 14  | FAQ accordion card | building out an FAQ accordion |            |
+| 14  | FAQ accordion card | building out an FAQ accordion | https://github.com/EmilyLee1206/faq-accordion-card |
