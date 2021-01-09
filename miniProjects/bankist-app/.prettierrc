@@ -1,0 +1,9 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,  
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "javascript-mini-project",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  }
+}
