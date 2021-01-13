@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -6,79 +6,82 @@
 
 // Data
 const account1 = {
-  owner: "Jonas Schmedtmann",
+  owner: 'Jonas Schmedtmann',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
-  pin: 1111,
+  pin: 1111
 };
 
 const account2 = {
-  owner: "Jessica Davis",
+  owner: 'Jessica Davis',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
-  pin: 2222,
+  pin: 2222
 };
 
 const account3 = {
-  owner: "Steven Thomas Williams",
+  owner: 'Steven Thomas Williams',
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
-  pin: 3333,
+  pin: 3333
 };
 
 const account4 = {
-  owner: "Sarah Smith",
+  owner: 'Sarah Smith',
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
-  pin: 4444,
+  pin: 4444
 };
 
 const accounts = [account1, account2, account3, account4];
 
 // Elements
-const labelWelcome = document.querySelector(".welcome");
-const labelDate = document.querySelector(".date");
-const labelBalance = document.querySelector(".balance__value");
-const labelSumIn = document.querySelector(".summary__value--in");
-const labelSumOut = document.querySelector(".summary__value--out");
-const labelSumInterest = document.querySelector(".summary__value--interest");
-const labelTimer = document.querySelector(".timer");
+const labelWelcome = document.querySelector('.welcome');
+const labelDate = document.querySelector('.date');
+const labelBalance = document.querySelector('.balance__value');
+const labelSumIn = document.querySelector('.summary__value--in');
+const labelSumOut = document.querySelector('.summary__value--out');
+const labelSumInterest = document.querySelector('.summary__value--interest');
+const labelTimer = document.querySelector('.timer');
 
-const containerApp = document.querySelector(".app");
-const containerMovements = document.querySelector(".movements");
+const containerApp = document.querySelector('.app');
+const containerMovements = document.querySelector('.movements');
 
-const btnLogin = document.querySelector(".login__btn");
-const btnTransfer = document.querySelector(".form__btn--transfer");
-const btnLoan = document.querySelector(".form__btn--loan");
-const btnClose = document.querySelector(".form__btn--close");
-const btnSort = document.querySelector(".btn--sort");
+const btnLogin = document.querySelector('.login__btn');
+const btnTransfer = document.querySelector('.form__btn--transfer');
+const btnLoan = document.querySelector('.form__btn--loan');
+const btnClose = document.querySelector('.form__btn--close');
+const btnSort = document.querySelector('.btn--sort');
 
-const inputLoginUsername = document.querySelector(".login__input--user");
-const inputLoginPin = document.querySelector(".login__input--pin");
-const inputTransferTo = document.querySelector(".form__input--to");
-const inputTransferAmount = document.querySelector(".form__input--amount");
-const inputLoanAmount = document.querySelector(".form__input--loan-amount");
-const inputCloseUsername = document.querySelector(".form__input--user");
-const inputClosePin = document.querySelector(".form__input--pin");
+const inputLoginUsername = document.querySelector('.login__input--user');
+const inputLoginPin = document.querySelector('.login__input--pin');
+const inputTransferTo = document.querySelector('.form__input--to');
+const inputTransferAmount = document.querySelector('.form__input--amount');
+const inputLoanAmount = document.querySelector('.form__input--loan-amount');
+const inputCloseUsername = document.querySelector('.form__input--user');
+const inputClosePin = document.querySelector('.form__input--pin');
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
 const currencies = new Map([
-  ["USD", "United States dollar"],
-  ["EUR", "Euro"],
-  ["GBP", "Pound sterling"],
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling']
 ]);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-const displayMovements = function (movements) {
-  containerMovements.innerHTML = "";
-  movements.forEach(function (mov, i) {
-    const type = mov > 0 ? "deposit" : "withdrawal";
+const displayMovements = function (movements, sort = false) {
+  containerMovements.innerHTML = '';
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
     <div class="movements__row">
         <div class="movements__type movements__type--${type}">
@@ -88,7 +91,7 @@ const displayMovements = function (movements) {
       </div>
     </div>
     `;
-    containerMovements.insertAdjacentHTML("afterbegin", html);
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
 
@@ -112,7 +115,7 @@ const calcDisplaySummary = function (acc) {
     .filter((mov) => mov > 0)
     .map((deposit) => (deposit * acc.interestRate) / 100)
     .filter((int, arr, i) => {
-      console.log(arr);
+      // console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
@@ -123,9 +126,9 @@ const createUserName = function (accs) {
   accs.forEach(function (acc) {
     acc.userName = acc.owner
       .toLowerCase()
-      .split(" ")
+      .split(' ')
       .map((name) => name[0])
-      .join("");
+      .join('');
   });
 };
 
@@ -138,7 +141,7 @@ const totalDepositsUSD = movements
   .map((mov) => mov * eurToUsd)
   .reduce((acc, cur) => acc + cur, 0);
 
-console.log(totalDepositsUSD);
+// console.log(totalDepositsUSD);
 
 let currentAccount;
 
@@ -148,7 +151,7 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
-btnLogin.addEventListener("click", function (e) {
+btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
 
   currentAccount = accounts.find(
@@ -157,27 +160,27 @@ btnLogin.addEventListener("click", function (e) {
   console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    console.log("Login!");
+    console.log('Login!');
     labelWelcome.textContent = `Welcome back ${
-      currentAccount.owner.split(" ")[0]
+      currentAccount.owner.split(' ')[0]
     }`;
-    containerApp.style.opacity = "100";
+    containerApp.style.opacity = '100';
     // 왼쪽에서, 오른쪽으로 할당하기 때문에, 이렇게 적는 것이 가능하다.
-    inputLoginUsername.value = inputLoginPin.value = "";
+    inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
 
     updateUI(currentAccount);
   }
 });
 
-btnTransfer.addEventListener("click", function (e) {
+btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Number(inputTransferAmount.value);
   const receiverAcc = accounts.find(
     (acc) => acc.userName === inputTransferTo.value
   );
   // console.log(amount, receiverAcc);
-  inputTransferAmount.value = inputTransferTo.value = "";
+  inputTransferAmount.value = inputTransferTo.value = '';
 
   if (
     amount > 0 &&
@@ -186,27 +189,53 @@ btnTransfer.addEventListener("click", function (e) {
     receiverAcc?.userName !== currentAccount.userName
   ) {
     // doing the transfer
-    console.log("Transfer Valid");
+    console.log('Transfer Valid');
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
     updateUI(currentAccount);
   }
 });
 
-btnClose.addEventListener("click", function (e) {
+btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
-  
+  const amount = Number(inputLoanAmount.value);
+
+  if (
+    amount > 0 &&
+    currentAccount.movements.some((mov) => mov >= amount * 0.1)
+  ) {
+    // Add movements
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
   if (
     inputCloseUsername.value === currentAccount.userName &&
     Number(inputClosePin.value) === currentAccount.pin
-    ) {
-      const index = accounts.findIndex(acc => acc.userName === currentAccount.userName);
+  ) {
+    const index = accounts.findIndex(
+      (acc) => acc.userName === currentAccount.userName
+    );
     console.log(index);
     accounts.splice(index, 1);
     containerApp.style.opacity = 0;
   }
   inputCloseUsername.value = inputClosePin.value = '';
 });
+
+let sorted = false;
+btnSort.addEventListener('click',function(e){
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+})
 
 // const eurToUsd = 1.1;
 // const movementsUSD = movements.map(function(mov){
@@ -292,3 +321,137 @@ btnClose.addEventListener("click", function (e) {
 // }, movements[0]); // initialValue에 0하지 않기! 만약 값들이 다 마이너스면 어떡해..ㅎㅎ
 
 // console.log(`최후의 승자..👑: ${max}`);
+
+// console.log(movements);
+
+// // EQUALITY
+// console.log(movements.includes(-130)); // true
+
+// // SOME: CONDITION
+// console.log(movements.some((mov) => mov === -130)); // true
+
+// const anyDeposits = movements.some((mov) => mov > 0); // 조건에 부합하는 any value!!
+// console.log(anyDeposits);
+
+// // EVERY
+// console.log(movements.every((mov) => mov > 0));
+// console.log(account4.movements.every((mov) => mov > 0));
+
+// // Separate callback
+// const deposit = mov => mov > 0;
+// console.log(movements.some(deposit));
+// console.log(movements.every(deposit));
+// console.log(movements.filter(deposit));
+
+// const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+// console.log(arr.flat());
+// // [1, 2, 3, 4, 5, 6, 7, 8]
+
+// const arrDeep = [[1, [2, 3]], [4, [5, 6]], 7, 8];
+// console.log(arrDeep.flat(2));
+// // [1, 2, 3, 4, 5, 6, 7, 8]
+
+// // const accountMovement = accounts.map(acc => acc.movements);
+// // console.log(accountMovement);
+// // const allMovements = accountMovement.flat();
+// // console.log(allMovements);
+// // const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+// // console.log(overallBalance);
+
+// // flat: chaining
+// const overallBalance = accounts
+//   .map((acc) => acc.movements)
+//   .flat()
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(overallBalance);
+// // 17840
+
+
+// // flatMap
+// const overallBalance = accounts
+//   .flatMap((acc) => acc.movements)
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(overallBalance);
+// // 17840
+
+const owners = ['Jonas', 'Zach', 'Adams', 'Martha'];
+console.log(owners.sort());
+// ["Adams", "Jonas", "Martha", "Zach"]
+// ABC 순서대로 정렬 🔤
+console.log(owners);
+// ["Adams", "Jonas", "Martha", "Zach"]
+// 원본 손상 😱😨
+
+// Numbers
+console.log(movements);
+// console.log(movements.sort());
+// 뭔가 이상하게 나온다..😱😨
+// 😯? Sort method is based on String 
+// How to fix!! 😌😇 => callback func을 이용해라!!
+
+// return < 0, A, B (Keep order)
+// return > 0, B, A (Switch order)
+
+// ascending 
+// movements.sort((a, b) => {
+//   if(a > b) return 1;
+//   if(a < b) return -1;
+// });
+
+// movements.sort((a, b) => a - b);
+// console.log('ascending', movements);
+
+// descending
+// movements.sort((a, b) => {
+//   if(a > b) return -1;
+//   if(a < b) return 1;
+// });
+
+// movements.sort((a, b) => b - a);
+// console.log('descending', movements);
+
+// 1. Array.fill() 🎃
+console.log([1, 2, 3]);
+console.log(new Array(1, 2, 3)); // [1, 2, 3]
+
+const x = new Array(7);
+console.log(x); // [empty x 7] array 
+// console.log(x.map(()=> 5)); // [empty x 7] array : doesn't work
+
+// x.fill(3); // mutate the underlying array 
+// x.fill(1, 3) // [empty × 3, 1, 1, 1, 1]
+x.fill(1, 3, 5) // [empty × 3, 1, 1, empty × 2]
+console.log(x); 
+
+x.fill(23, 4, 6) // [empty × 3, 1, 23, 23, empty] 
+console.log(x); 
+
+// 2. Array.from() 🎃
+const y = Array.from({length: 7}, ()=> 1);
+console.log(y); // [1, 1, 1, 1, 1, 1, 1]
+
+const z = Array.from({length: 7}, (_, i)=> i+1); // cur => _ 컨벤션에 따라 인자명 바꿔주기
+console.log(z); // [1, 2, 3, 4, 5, 6, 7]
+
+/*
+querySelectorAll 은 NodeList를 반환하는데, 진짜 Array가 아니다. 
+따라서 많은 Array method를 가지고 있지 않는다. 
+그럼 어떻게 해야해요??😙 NodeList를 Array로 반환하자! 
+For that, `Array.from()`은 PERFECT! 👏
+*/
+
+labelBalance.addEventListener('click', function(){
+  // movementsUI => Array 
+  // 두번째 인자에 맵핑한 숫자 넣기 
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'), 
+    el => Number(el.textContent.replace('€' ,''))
+  )
+  console.log(movementsUI);
+
+  // 다른 방법!
+  const movementsUI2 = [
+    ...document.querySelectorAll('.movements__value'),
+  ].map(el => Number(el.textContent.replace('€', '')));
+  console.log(movementsUI2);
+});
