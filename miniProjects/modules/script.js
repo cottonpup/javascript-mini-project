@@ -132,3 +132,10 @@ Retain application state which is lost during a full reload.
 */
 
 // preset-env에 포함되지 않는 코드 적어보자.
+class Person {
+  greeting = 'Hey';
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.greeting}`);
+  }
+}
