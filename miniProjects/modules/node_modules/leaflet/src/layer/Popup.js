@@ -181,9 +181,9 @@ export var Popup = DivOverlay.extend({
 		var wrapper = this._wrapper = DomUtil.create('div', prefix + '-content-wrapper', container);
 		this._contentNode = DomUtil.create('div', prefix + '-content', wrapper);
 
-		DomEvent.disableClickPropagation(container);
+		DomEvent.disableClickPropagation(wrapper);
 		DomEvent.disableScrollPropagation(this._contentNode);
-		DomEvent.on(container, 'contextmenu', DomEvent.stopPropagation);
+		DomEvent.on(wrapper, 'contextmenu', DomEvent.stopPropagation);
 
 		this._tipContainer = DomUtil.create('div', prefix + '-tip-container', container);
 		this._tip = DomUtil.create('div', prefix + '-tip', this._tipContainer);

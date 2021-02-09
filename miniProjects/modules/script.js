@@ -136,6 +136,24 @@ class Person {
   greeting = 'Hey';
   constructor(name) {
     this.name = name;
-    console.log(`${this.greeting}`);
+    console.log(`${this.greeting}, ${this.name}`);
   }
 }
+
+const jonas = new Person('Jonas');
+
+console.log('Jonas' ?? null);
+
+// 코드가 안변하는 친구들..
+// 하지만 방법이 있음!! 얘네들을 폴리필하면 됨!
+console.log(cart.find((el) => el.quantity >= 2));
+Promise.resolve('TEST').then((x) => console.log(x));
+
+// import 'core-js/stable';
+
+// We can cherry pick🍒, it will reduce bundle size
+import 'core-js/stable/array/find';
+import 'core-js/stable/promise';
+
+// Polifilling async function
+import 'regenerator-runtime/runtime';

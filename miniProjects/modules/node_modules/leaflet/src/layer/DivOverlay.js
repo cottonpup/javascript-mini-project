@@ -102,7 +102,7 @@ export var DivOverlay = Layer.extend({
 	},
 
 	// @method getElement: String|HTMLElement
-	// Returns the HTML container of the popup.
+	// Alias for [getContent()](#popup-getcontent)
 	getElement: function () {
 		return this._container;
 	},

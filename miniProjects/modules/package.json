@@ -10,8 +10,10 @@
   "author": "Emily",
   "license": "ISC",
   "dependencies": {
-    "leaflet": "^1.7.1",
-    "lodash-es": "^4.17.20"
+    "core-js": "^3.6.5",
+    "leaflet": "^1.6.0",
+    "lodash-es": "^4.17.15",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "parcel": "^1.12.4"

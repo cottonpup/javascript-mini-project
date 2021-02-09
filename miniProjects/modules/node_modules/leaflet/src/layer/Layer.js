@@ -61,10 +61,6 @@ export var Layer = Evented.extend({
 
 	// @method removeFrom(map: Map): this
 	// Removes the layer from the given map
-	//
-	// @alternative
-	// @method removeFrom(group: LayerGroup): this
-	// Removes the layer from the given `LayerGroup`
 	removeFrom: function (obj) {
 		if (obj) {
 			obj.removeLayer(this);

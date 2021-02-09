@@ -1,4 +1,5 @@
 import * as Browser from '../core/Browser';
+import {_pointersCount} from './DomEvent.Pointer';
 
 /*
  * Extends the event handling code with double tap support for mobile browsers.
@@ -15,13 +16,16 @@ export function addDoubleTapListener(obj, handler, id) {
 	    delay = 250;
 
 	function onTouchStart(e) {
+		var count;
 
 		if (Browser.pointer) {
-			if (!e.isPrimary) { return; }
-			if (e.pointerType === 'mouse') { return; } // mouse fires native dblclick
-		} else if (e.touches.length > 1) {
-			return;
+			if ((!Browser.edge) || e.pointerType === 'mouse') { return; }
+			count = _pointersCount;
+		} else {
+			count = e.touches.length;
 		}
+
+		if (count > 1) { return; }
 
 		var now = Date.now(),
 		    delta = now - (last || now);
@@ -34,7 +38,7 @@ export function addDoubleTapListener(obj, handler, id) {
 	function onTouchEnd(e) {
 		if (doubleTap && !touch.cancelBubble) {
 			if (Browser.pointer) {
-				if (e.pointerType === 'mouse') { return; }
+				if ((!Browser.edge) || e.pointerType === 'mouse') { return; }
 				// work around .type being readonly with MSPointer* events
 				var newTouch = {},
 				    prop, i;
@@ -75,7 +79,9 @@ export function removeDoubleTapListener(obj, id) {
 
 	obj.removeEventListener(_touchstart, touchstart, Browser.passiveEvents ? {passive: false} : false);
 	obj.removeEventListener(_touchend, touchend, Browser.passiveEvents ? {passive: false} : false);
-	obj.removeEventListener('dblclick', dblclick, false);
+	if (!Browser.edge) {
+		obj.removeEventListener('dblclick', dblclick, false);
+	}
 
 	return this;
 }
