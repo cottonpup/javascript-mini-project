@@ -231,11 +231,11 @@ btnClose.addEventListener('click', function (e) {
 });
 
 let sorted = false;
-btnSort.addEventListener('click',function(e){
+btnSort.addEventListener('click', function (e) {
   e.preventDefault();
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
-})
+});
 
 // const eurToUsd = 1.1;
 // const movementsUSD = movements.map(function(mov){
@@ -366,7 +366,6 @@ btnSort.addEventListener('click',function(e){
 // console.log(overallBalance);
 // // 17840
 
-
 // // flatMap
 // const overallBalance = accounts
 //   .flatMap((acc) => acc.movements)
@@ -386,13 +385,13 @@ console.log(owners);
 console.log(movements);
 // console.log(movements.sort());
 // 뭔가 이상하게 나온다..😱😨
-// 😯? Sort method is based on String 
+// 😯? Sort method is based on String
 // How to fix!! 😌😇 => callback func을 이용해라!!
 
 // return < 0, A, B (Keep order)
 // return > 0, B, A (Switch order)
 
-// ascending 
+// ascending
 // movements.sort((a, b) => {
 //   if(a > b) return 1;
 //   if(a < b) return -1;
@@ -415,22 +414,22 @@ console.log([1, 2, 3]);
 console.log(new Array(1, 2, 3)); // [1, 2, 3]
 
 const x = new Array(7);
-console.log(x); // [empty x 7] array 
+console.log(x); // [empty x 7] array
 // console.log(x.map(()=> 5)); // [empty x 7] array : doesn't work
 
-// x.fill(3); // mutate the underlying array 
+// x.fill(3); // mutate the underlying array
 // x.fill(1, 3) // [empty × 3, 1, 1, 1, 1]
-x.fill(1, 3, 5) // [empty × 3, 1, 1, empty × 2]
-console.log(x); 
+x.fill(1, 3, 5); // [empty × 3, 1, 1, empty × 2]
+console.log(x);
 
-x.fill(23, 4, 6) // [empty × 3, 1, 23, 23, empty] 
-console.log(x); 
+x.fill(23, 4, 6); // [empty × 3, 1, 23, 23, empty]
+console.log(x);
 
 // 2. Array.from() 🎃
-const y = Array.from({length: 7}, ()=> 1);
+const y = Array.from({ length: 7 }, () => 1);
 console.log(y); // [1, 1, 1, 1, 1, 1, 1]
 
-const z = Array.from({length: 7}, (_, i)=> i+1); // cur => _ 컨벤션에 따라 인자명 바꿔주기
+const z = Array.from({ length: 7 }, (_, i) => i + 1); // cur => _ 컨벤션에 따라 인자명 바꿔주기
 console.log(z); // [1, 2, 3, 4, 5, 6, 7]
 
 /*
@@ -440,18 +439,18 @@ querySelectorAll 은 NodeList를 반환하는데, 진짜 Array가 아니다.
 For that, `Array.from()`은 PERFECT! 👏
 */
 
-labelBalance.addEventListener('click', function(){
-  // movementsUI => Array 
-  // 두번째 인자에 맵핑한 숫자 넣기 
+labelBalance.addEventListener('click', function () {
+  // movementsUI => Array
+  // 두번째 인자에 맵핑한 숫자 넣기
   const movementsUI = Array.from(
-    document.querySelectorAll('.movements__value'), 
-    el => Number(el.textContent.replace('€' ,''))
-  )
+    document.querySelectorAll('.movements__value'),
+    (el) => Number(el.textContent.replace('€', ''))
+  );
   console.log(movementsUI);
 
   // 다른 방법!
   const movementsUI2 = [
-    ...document.querySelectorAll('.movements__value'),
-  ].map(el => Number(el.textContent.replace('€', '')));
+    ...document.querySelectorAll('.movements__value')
+  ].map((el) => Number(el.textContent.replace('€', '')));
   console.log(movementsUI2);
 });
